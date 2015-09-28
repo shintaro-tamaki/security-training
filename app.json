@@ -1,0 +1,6 @@
+{
+  "name": "Security Tutorial Java on Heroku",
+  "description": "Security Tutorial Java on Heroku.",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}

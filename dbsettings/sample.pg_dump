@@ -1,0 +1,84 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: postgres; Type: COMMENT; Schema: -; Owner: shintaro.tamaki
+--
+
+COMMENT ON DATABASE postgres IS 'default administrative connection database';
+
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: member; Type: TABLE; Schema: public; Owner: shintaro.tamaki; Tablespace: 
+--
+
+CREATE TABLE member (
+    member_id bigint NOT NULL,
+    member_name character varying(200) NOT NULL
+);
+
+
+ALTER TABLE member OWNER TO "shintaro.tamaki";
+
+--
+-- Data for Name: member; Type: TABLE DATA; Schema: public; Owner: shintaro.tamaki
+--
+
+COPY member (member_id, member_name) FROM stdin;
+1	Shintaro Tamaki
+2	Yamada Taro
+3	Suzuki Jiro
+4	諸葛亮孔明
+\.
+
+
+--
+-- Name: member_pkey; Type: CONSTRAINT; Schema: public; Owner: shintaro.tamaki; Tablespace: 
+--
+
+ALTER TABLE ONLY member
+    ADD CONSTRAINT member_pkey PRIMARY KEY (member_id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: shintaro.tamaki
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM "shintaro.tamaki";
+GRANT ALL ON SCHEMA public TO "shintaro.tamaki";
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
