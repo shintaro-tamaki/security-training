@@ -40,7 +40,8 @@ public class SqlinjectionAction {
 		PreparedStatement prepareStatement = null;
 		ResultSet rs = null;
 		try {
-			con = DatabaseUrl.extract().getConnection();
+			Class.forName("org.postgresql.Driver").newInstance();
+			con = DriverManager.getConnection("jdbc:postgresql:postgres", "root", "");				
 			sql = "SELECT * FROM member WHERE member_name = ?";
 			prepareStatement = con.prepareStatement(sql);
 			prepareStatement.setString(1, sqlInjectionForm.arg);
