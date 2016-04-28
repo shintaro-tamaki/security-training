@@ -13,9 +13,6 @@ import jp.co.bizreach.form.SqlInjectionForm;
 import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 
-import com.heroku.sdk.jdbc.DatabaseUrl;
-
-
 public class SqlinjectionAction {
 
 	public String sql;
@@ -40,8 +37,8 @@ public class SqlinjectionAction {
 		PreparedStatement prepareStatement = null;
 		ResultSet rs = null;
 		try {
-			Class.forName("org.postgresql.Driver").newInstance();
-			con = DriverManager.getConnection("jdbc:postgresql:postgres", "root", "");				
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/example_security", "root", "");			
 			sql = "SELECT * FROM member WHERE member_name = ?";
 			prepareStatement = con.prepareStatement(sql);
 			prepareStatement.setString(1, sqlInjectionForm.arg);
